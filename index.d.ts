@@ -4,13 +4,16 @@ import { MercuriusOptions } from 'mercurius'
 import {
   DocumentNode
 } from 'graphql/language/ast';
+import { SDLValidationRule } from 'graphql/validation/ValidationContext';
 
 export interface buildFederationSchemaOptions {
   isGateway?: boolean
+  customRules: () => any
 }
 
 export type MercuriusFederationOptions = Omit<MercuriusOptions, 'schema'> & {
   schema: string | DocumentNode | Array<DocumentNode>
+  customRules: (rules: SDLValidationRule[]) => SDLValidationRule[]
 }
 
 export declare const mercuriusFederationPlugin: (
