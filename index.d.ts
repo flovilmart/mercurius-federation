@@ -8,7 +8,7 @@ import { SDLValidationRule } from 'graphql/validation/ValidationContext';
 
 export interface buildFederationSchemaOptions {
   isGateway?: boolean
-  customRules: () => any
+  customRules: (rules: SDLValidationRule[]) => SDLValidationRule[]
 }
 
 export type MercuriusFederationOptions = Omit<MercuriusOptions, 'schema'> & {
